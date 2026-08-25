@@ -17,7 +17,7 @@ jobs:
       - name: Setup Python 3.13
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
+          python-version: "3.13" # ==========仅此一处修改，之前是3.11
 
       - name: Install fixed version Rust (compatible with litellm 1.93.0)
         uses: dtolnay/rust-toolchain@1.78.0
@@ -29,7 +29,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install maturin==1.6.0 setuptools wheel
 
-      - name: Build whl package (cp313)
+      - name: Build whl package
         run: maturin build --release --target x86_64-pc-windows-msvc --out dist
 
       - name: List dist files
