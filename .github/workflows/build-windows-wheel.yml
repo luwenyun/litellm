@@ -1,15 +1,17 @@
 name: Build Windows litellm 1.93.0 wheel
 on:
-  workflow_dispatch: # 手动触发（重点！你自己点按钮跑）
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Checkout code
+      - name: Checkout official litellm v1.93.0
         uses: actions/checkout@v4
-      - name: Checkout v1.93.0 tag
-        run: git checkout v1.93.0
+        with:
+          repository: BerriAI/litellm
+          ref: v1.93.0
+          submodules: false
 
       - name: Setup Python
         uses: actions/setup-python@v5
